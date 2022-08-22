@@ -1,8 +1,10 @@
 from django.urls import path
-from . views import home_page
+from . views import  leads_list,lead_details    
 
+app_name = "leads"
 
 urlpatterns = [
     
-    path('',home_page)
+    path('',leads_list),
+    path('<pk>/',lead_details)
 ]
