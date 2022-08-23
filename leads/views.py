@@ -20,4 +20,7 @@ def lead_details(request,pk):
         "lead":lead
     }
     
-    return HttpResponse("details")
+    return render(request, "leads/lead_detail.html",context)
+
+def lead_create(request):
+    return render(request,"leads/lead_create.html")
