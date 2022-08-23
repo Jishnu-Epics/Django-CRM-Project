@@ -15,7 +15,7 @@
     <body>
         <a href="/leads"> Go back to leads</a>
         <hr />
-        <h1>Create new lead</h1>
+        <h1>Update lead: {{lead.first_name}} {{lead.last_name}}</h1>
         <form method="post">
         {% csrf_token %}
        {{forms.as_p}}
