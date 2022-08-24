@@ -19,7 +19,7 @@
             </div>
             <form method="post" >
                 {% csrf_token %}
-                {{ forms.as_p }}
+                {{ form.as_p }}
                 <button type="submit" class="w-full text-white bg-blue-500 hover:bg-blue-600 px-3 py-2 rounded-md">Submit</button>
             </form>
             <div class="mt-5 py-5 border-t border-gray-200">

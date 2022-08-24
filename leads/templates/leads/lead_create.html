@@ -1,28 +1,12 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Document</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+{% extends "base.html" %}
 
-     
-
-
-    </head>
-    <body>
+{% block content %}
         <a href="{% url 'leads:lead-list' %}"> Go back to leads</a>
         <hr />
         <h1>Create new lead</h1>
         <form method="post">
         {% csrf_token %}
-       {{forms.as_p}}
+         {{form.as_p}}
        <button type="Sumbit">Sumbit</button>
        </form>
-
-
-        
-    </body>
-</html>
+{% endblock content %}  

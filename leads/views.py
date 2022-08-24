@@ -45,10 +45,10 @@ def lead_detail(request, pk):
 
 class LeadCreateView(CreateView):
     template_name = "leads/lead_create.html"
-    forms_class = LeadModelForm
+    form_class = LeadModelForm
     
     def get_success_url(self):
-        return reverse("lead:lead_list")
+        return reverse("leads:lead-list")
 
 
 
@@ -76,7 +76,7 @@ def lead_update(request, pk):
     
             return redirect("/leads")
     context = {
-        "forms":LeadModelForm(),
+        "form": form,
         "lead": lead
          }
     
