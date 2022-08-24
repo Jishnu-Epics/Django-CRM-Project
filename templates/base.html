@@ -1,3 +1,5 @@
+{% load static%}
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,23 +8,17 @@
         <title>DJCRM</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css">
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 
     </head>
     <body>
-    <div class="max-w-7xl max-auto ">
-
-
-     {%include 'navbar.html'%}
-    {% block content %}
-    {% endblock content %}
-
-
-    </div>
-
-    {% include "scripts.html" %}
-        
-        
-        
+        <div class="max-w-7xl max-auto ">
+            {%include 'navbar.html'%}
+            {% block content %}
+            {% endblock content %}
+        </div>
+        {% include "scripts.html" %}
+    
     </body>
-</html>
+    </html>
