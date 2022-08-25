@@ -129,15 +129,9 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = "static_root"
 
-
 AUTH_USER_MODEL = 'leads.User'
-EMAIL_USE_TLS = True  
-EMAIL_HOST = 'smtp.gmail.com'  
-EMAIL_PORT = 587  
-EMAIL_HOST_USER = 'jishnuvv23@gmail.com'  
-EMAIL_HOST_PASSWORD = '8606047649'
-
-LOGIN_REDIRECT_URL = 'login'
+EMAIL_BACKEND = "django.core.mail.backend.console.EmailBackend"
+LOGIN_REDIRECT_URL = '/leads'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
