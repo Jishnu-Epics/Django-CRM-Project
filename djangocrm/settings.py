@@ -137,6 +137,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'jishnuvv23@gmail.com'  
 EMAIL_HOST_PASSWORD = '8606047649'
 
+LOGIN_REDIRECT_URL = 'login'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
