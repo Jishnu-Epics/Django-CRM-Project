@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'leads',
+    'agents'
 ]
 
 MIDDLEWARE = [
@@ -130,8 +131,9 @@ STATICFILES_DIRS = [
 STATIC_ROOT = "static_root"
 
 AUTH_USER_MODEL = 'leads.User'
-EMAIL_BACKEND = "django.core.mail.backend.console.EmailBackend"
-LOGIN_REDIRECT_URL = '/leads'
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+LOGIN_REDIRECT_URL = "/leads"
+LOGIN_URL = "/login"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
