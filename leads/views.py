@@ -71,7 +71,7 @@ class LeadDetailView(generic.DetailView):
     def get_queryset(self):
         user = self.request.user
         if user.is_organisor:
-            queryset = Lead.objects.filter(organisation=user.UserProfile)
+            queryset = Lead.objects.filter(organisation=user.userprofile)
         else:
             queryset = Lead.objects.filter(organisation=user.agent.organisation)
             queryset = queryset.filter(agent_user=user)
@@ -134,7 +134,7 @@ class LeadUpdateView(generic.UpdateView):
 
     def get_queryset(self):
         user = self.request.user
-        return Lead.objects.filter(organisation=user.UserProfile)
+        return Lead.objects.filter(organisation=user.userprofile)
     
     def get_success_url(self):
         return reverse("leads:lead-list")
@@ -180,9 +180,24 @@ def lead_delete(request, pk):
 class AssignAgentView(OrganisorAndLoginRequiredMixin, generic.FormView):
     template_name = "leads/assign_agent.html"
     form_class = AssignAgentForm
+    
+    def get_form_kwargs(self):
+        kwargs = super(AssignAgentView, self).get_form_kwargs(**kwargs)
+
+        kwargs.update({
+            "request": self.request
+        })
+        return kwargs
 
     def get_success_url(self):
         return reverse("leads:lead-list")
+
+    def form_valid(self, form):
+        agent = form.cleaned_data["agent"]
+        lead = Lead.objects.get(id=self.kwargs["pk"])
+        lead.agent = agent
+        lead.save()
+        return super(AssignAgentView, self).form_valid(form)  
 
 # def lead_update(request,pk):
 #      lead = Lead.objects.get(id=pk)
