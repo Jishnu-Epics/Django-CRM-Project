@@ -2,8 +2,9 @@ from django.core.mail import send_mail
 from django.shortcuts import render,redirect,reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic 
+from agents.mixins import OrganisorAndLoginRequiredMixin
 from . models import Lead
-from . forms import LeadForm,LeadModelForm,CustomUserCreationForm
+from . forms import LeadForm,LeadModelForm,CustomUserCreationForm,AssignAgentForm
 
 
 class SignupView(generic.CreateView):
@@ -175,6 +176,13 @@ def lead_delete(request, pk):
     lead.delete()
     return redirect("/leads")         
 
+
+class AssignAgentView(OrganisorAndLoginRequiredMixin, generic.FormView):
+    template_name = "leads/assign_agent.html"
+    form_class = AssignAgentForm
+
+    def get_success_url(self):
+        return reverse("leads:lead-list")
 
 # def lead_update(request,pk):
 #      lead = Lead.objects.get(id=pk)

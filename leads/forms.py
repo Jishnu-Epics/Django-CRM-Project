@@ -28,3 +28,6 @@ class CustomUserCreationForm(UserCreationForm):
         model = User
         fields = ("username",)
         field_classes = {'username': UsernameField}
+
+class AssignAgentForm(forms.Form):
+    agent = forms.ChoiceField(choices=["agent 1", "agent 2"])
