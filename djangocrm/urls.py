@@ -13,13 +13,14 @@ from django.contrib.auth.views import (
 )
 
 from django.urls import path,include
-from leads.views import  home_page,HomePageView,SignupView
+from leads.views import  home_page,HomePageView,SignupView,DashboardView
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',HomePageView.as_view(), name='home_page'),
+    path('dashboard/', DashboardView.as_view(), name='dashboard'),
     path('leads/', include('leads.urls', namespace="leads")),
     path('agents/', include('agents.urls', namespace="agents")),
     path('signup/',SignupView.as_view(), name='signup'),
@@ -33,3 +34,4 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
